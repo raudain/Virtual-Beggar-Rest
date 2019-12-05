@@ -6,8 +6,12 @@ public class WorkerRepository {
 	
 	private WorkerDao dao = new WorkerDao();
 		
-	List<Worker> getWorkers() {
+	ArrayList<Worker> getWorkers() {
+		
+		List<Worker> gw = new List<Worker>();
+		gw = dao.getWorkers();
 		return dao.getWorkers();
+		
 	}
 	
 	Worker getWorker(short room) {	

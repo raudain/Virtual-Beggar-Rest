@@ -22,14 +22,14 @@ public class WorkerResource
 	@Produces({MediaType.APPLICATION_JSON, MediaType.APPLICATION_XML})
 	public List<Worker> getWorkers()
 	{
-		System.out.println("getAlien called...");
+		System.out.println("getWorkers called...");
 		return repo.getWorkers();
 	}
 	
 	@GET
 	@Path("worker/{id}")
 	@Produces({MediaType.APPLICATION_JSON, MediaType.APPLICATION_XML})
-	public Worker getWorker(@PathParam("id") int id)
+	public Worker getWorker(@PathParam("id") short id)
 	{
 		return repo.getWorker(id);
 	}
@@ -64,7 +64,7 @@ public class WorkerResource
 	
 	@DELETE
 	@Path("alien/{id}")
-	public Worker killAlien(@PathParam("id") int id)
+	public Worker killAlien(@PathParam("id") short id)
 	{
 		Worker a = repo.getWorker(id);
 		
