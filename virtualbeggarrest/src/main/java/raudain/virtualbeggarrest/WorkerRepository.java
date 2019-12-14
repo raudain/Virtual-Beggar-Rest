@@ -5,13 +5,9 @@ import java.util.List;
 public class WorkerRepository {
 	
 	private WorkerDao dao = new WorkerDao();
-		
-	ArrayList<Worker> getWorkers() {
-		
-		List<Worker> gw = new List<Worker>();
-		gw = dao.getWorkers();
+	
+	List<Worker> getWorkers() {
 		return dao.getWorkers();
-		
 	}
 	
 	Worker getWorker(short room) {	

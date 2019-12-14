@@ -1,5 +1,7 @@
 package raudain.virtualbeggarrest;
 
+import java.util.ArrayList;
+import java.util.LinkedList;
 import java.util.List;
 
 import javax.ws.rs.Consumes;
@@ -20,8 +22,7 @@ public class WorkerResource
 	
 	@GET
 	@Produces({MediaType.APPLICATION_JSON, MediaType.APPLICATION_XML})
-	public List<Worker> getWorkers()
-	{
+	public List<Worker> getWorkers() {	
 		System.out.println("getWorkers called...");
 		return repo.getWorkers();
 	}

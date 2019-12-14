@@ -16,7 +16,7 @@ public class Worker {
     /**
      * @return the room
      */
-    short getRoom() {
+    public short getRoom() {
 
         return room;
     }
@@ -25,7 +25,7 @@ public class Worker {
 	/**
      * @param room the room to set
      */
-    void setRoom(final short room) {
+    void setRoom(short room) {
 
         this.room = room;
     }
@@ -33,7 +33,7 @@ public class Worker {
     /**
      * @return the name
      */
-    String getName() {
+    public String getName() {
 
         return name;
     }
@@ -41,7 +41,7 @@ public class Worker {
     /**
      * @param name the name to set
      */
-    void setName(final String name) {
+    void setName(String name) {
 
         this.name = name;
     }
@@ -49,7 +49,7 @@ public class Worker {
     /**
      * @return the profession
      */
-    String getProfession() {
+    public String getProfession() {
 
         return profession;
     }
@@ -57,7 +57,7 @@ public class Worker {
     /**
      * @param profession the profession to set
      */
-    void setProfession(final String profession) {
+    void setProfession(String profession) {
 
         this.profession = profession;
     }
@@ -65,7 +65,7 @@ public class Worker {
     /**
      * @return the endurance
      */
-    String getEndurance() {
+    public String getEndurance() {
 
         return endurance;
     }
@@ -73,7 +73,7 @@ public class Worker {
     /**
      * @param endurance the endurance to set
      */
-    void setEndurance(final String endurance) {
+    void setEndurance(String endurance) {
 
         this.endurance = endurance;
     }
@@ -81,7 +81,7 @@ public class Worker {
     /**
      * @return the level
      */
-    byte getLevel() {
+    public byte getLevel() {
 
         return level;
     }
@@ -97,7 +97,7 @@ public class Worker {
     /**
      * @return the cost
      */
-    long getCost() {
+    public long getCost() {
 
         return cost;
     }
@@ -109,11 +109,4 @@ public class Worker {
 
         this.cost = cost;
     }
-    
-    @Override
-	public String toString() {
-		return "Worker [room=" + room + ", name=" + name + ", profession=" + profession + ", endurance=" + endurance
-				+ ", level=" + level + ", cost=" + cost + "]";
-	}
-
 }

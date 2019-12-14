@@ -55,7 +55,6 @@ public class WorkerDao {
 	 *
 	 * @return Collection of Events
 	 *
-	 * @throws ClassNotFoundException
 	 * @throws SQLException
 	 *
 	 */
@@ -70,7 +69,8 @@ public class WorkerDao {
 			statement = connection.createStatement();
 			resultSet = statement.executeQuery(sqlScript);
 		} catch (final SQLException e) {
-			e.printStackTrace();;
+			e.printStackTrace();
+			;
 		}
 
 		// Now we collect the data from the result in order to display them in
@@ -78,6 +78,7 @@ public class WorkerDao {
 		ArrayList<Worker> workerList = new ArrayList<Worker>();
 		try {
 			while (resultSet.next()) {
+				
 				Worker worker = new Worker();
 
 				short room = resultSet.getShort("room");
@@ -108,6 +109,7 @@ public class WorkerDao {
 		} catch (final SQLException e) {
 			System.out.println("Error. Problem with closing connection: " + e);
 		}
+
 		return workerList;
 	}
 
@@ -125,7 +127,6 @@ public class WorkerDao {
 	 *
 	 * @return Collection of Events
 	 *
-	 * @throws ClassNotFoundException
 	 * @throws SQLException
 	 *
 	 */
@@ -181,8 +182,7 @@ public class WorkerDao {
 	 * Return the ArrayList to the calling method. <br/>
 	 *
 	 * @return Collection of Events
-	 *
-	 * @throws ClassNotFoundException
+	 * 
 	 * @throws SQLException
 	 *
 	 */
@@ -257,7 +257,8 @@ public class WorkerDao {
 			preparedStatement.setString(2, profession);
 			preparedStatement.setString(3, endurance);
 			preparedStatement.setByte(4, level);
-			preparedStatement.setLong(5, cost);;
+			preparedStatement.setLong(5, cost);
+			;
 			preparedStatement.setInt(6, room);
 			preparedStatement.executeUpdate();
 			connection.close();
@@ -273,6 +274,6 @@ public class WorkerDao {
 
 	public void delete(Short room) {
 		// TODO Auto-generated method stub
-		
+
 	}
 }
