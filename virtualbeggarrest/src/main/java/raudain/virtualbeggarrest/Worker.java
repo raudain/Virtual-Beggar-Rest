@@ -25,7 +25,7 @@ public class Worker {
 	/**
      * @param room the room to set
      */
-    void setRoom(short room) {
+    public void setRoom(short room) {
 
         this.room = room;
     }
@@ -41,7 +41,7 @@ public class Worker {
     /**
      * @param name the name to set
      */
-    void setName(String name) {
+    public void setName(String name) {
 
         this.name = name;
     }
@@ -57,7 +57,7 @@ public class Worker {
     /**
      * @param profession the profession to set
      */
-    void setProfession(String profession) {
+    public void setProfession(String profession) {
 
         this.profession = profession;
     }
@@ -73,7 +73,7 @@ public class Worker {
     /**
      * @param endurance the endurance to set
      */
-    void setEndurance(String endurance) {
+    public void setEndurance(String endurance) {
 
         this.endurance = endurance;
     }
@@ -89,7 +89,7 @@ public class Worker {
     /**
      * @param level the level to set
      */
-    void setLevel(final byte level) {
+    public void setLevel(final byte level) {
 
         this.level = level;
     }
@@ -105,7 +105,7 @@ public class Worker {
     /**
      * @param cost the cost to set
      */
-    void setCost(final long cost) {
+    public void setCost(final long cost) {
 
         this.cost = cost;
     }
