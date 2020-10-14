@@ -7,8 +7,6 @@ import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.ArrayList;
 
-import org.springframework.context.support.ClassPathXmlApplicationContext;
-
 /**
  * <br/>
  * CLASS DESCRIPTION: <br/>
@@ -27,15 +25,7 @@ public class WorkerDao {
 	// JDBC API classes for data persistence
 	private Connection connection = null;
 	private PreparedStatement preparedStatement = null;
-	private DatabaseQuerysBean sqlScripts;
 	private ResultSet resultSet = null;
-
-	// Default constructor for injecting Spring dependencies for SQL queries
-	public WorkerDao() {
-		try (ClassPathXmlApplicationContext context = new ClassPathXmlApplicationContext("applicationContext.xml")) {
-			sqlScripts = (DatabaseQuerysBean) context.getBean("SqlBean");
-		}
-	}
 
 	/**
 	 * <br/>
@@ -64,7 +54,7 @@ public class WorkerDao {
 
 		connection = DataConnection.createConnection();
 
-		String sqlScript = sqlScripts.getListWorkers();
+		String sqlScript = "SELECT * FROM workers;";
 		try {
 			statement = connection.createStatement();
 			resultSet = statement.executeQuery(sqlScript);
@@ -243,7 +233,7 @@ public class WorkerDao {
 		// Create a new connection to the database
 		connection = DataConnection.createConnection();
 
-		String sqlScript = sqlScripts.getUpdateWorker();
+		String sqlScript = "UPDATE `mydb`.`workers` SET `name` = ?, `profession` = ?, `endurance` = ?, `level` = ?, `cost` = ? WHERE (`room` = ?);";
 		short room = updatedWorker.getRoom();
 		String name = updatedWorker.getName();
 		String profession = updatedWorker.getProfession();
