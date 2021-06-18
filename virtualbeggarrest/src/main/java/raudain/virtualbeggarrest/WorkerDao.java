@@ -93,16 +93,13 @@ public class WorkerDao {
 				String endurance = resultSet.getString("endurance");
 				worker.setEndurance(endurance);
 
-				byte level = resultSet.getByte("level");
-				worker.setLevel(level);
-
 				long cost = resultSet.getLong("cost");
 				worker.setCost(cost);
 
 				workerList.add(worker);
 			}
 		} catch (final SQLException e) {
-			System.out.println("Error. Problem reading data: " + e);
+			System.out.println("WorkerDao.getWorkers() Error: " + e);
 		}
 		try {
 			DataConnection.closeConnection();

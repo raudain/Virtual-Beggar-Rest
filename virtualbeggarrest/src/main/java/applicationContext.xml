@@ -8,7 +8,7 @@
 	http://www.springframework.org/schema/context/spring-context-2.5.xsd ">
 	
 	<bean id="SqlBean" class="raudain.virtualbeggarrest.DatabaseQuerysBean">
-		<property name="listWorkers" value="SELECT * FROM workers;"></property>
+		<property name="listWorkers" value="SELECT workers.room, workers.name, professions.type AS profession, endurances.level AS endurance, workers.cost FROM mydb.workers INNER JOIN professions ON  professions.id = workers.profession INNER JOIN endurances ON endurances.id = workers.endurance;"></property>
 		<property name="updateWorker" value="UPDATE `mydb`.`workers` SET `name` = ?, `profession` = ?, `endurance` = ?, `level` = ?, `cost` = ? WHERE (`room` = ?);"></property>
  	</bean>
 </beans>

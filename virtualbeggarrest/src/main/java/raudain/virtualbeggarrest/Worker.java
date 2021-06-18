@@ -9,7 +9,6 @@ public class Worker {
     private String name;
     private String profession;
     private String endurance;
-    private byte level;
     private long cost;
 
 
@@ -76,22 +75,6 @@ public class Worker {
     public void setEndurance(String endurance) {
 
         this.endurance = endurance;
-    }
-
-    /**
-     * @return the level
-     */
-    public byte getLevel() {
-
-        return level;
-    }
-
-    /**
-     * @param level the level to set
-     */
-    public void setLevel(final byte level) {
-
-        this.level = level;
     }
 
     /**
