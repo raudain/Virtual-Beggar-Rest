@@ -208,9 +208,6 @@ public class WorkerDao {
 				String endurance = resultSet.getString("endurance");
 				worker.setEndurance(endurance);
 
-				byte level = resultSet.getByte("level");
-				worker.setLevel(level);
-
 				long cost = resultSet.getLong("cost");
 				worker.setCost(cost);
 			}
@@ -245,7 +242,6 @@ public class WorkerDao {
 		String name = updatedWorker.getName();
 		String profession = updatedWorker.getProfession();
 		String endurance = updatedWorker.getEndurance();
-		Byte level = updatedWorker.getLevel();
 		Long cost = updatedWorker.getCost();
 		try {
 			// Prepare a statement object using the connection for provided worker room
@@ -253,10 +249,8 @@ public class WorkerDao {
 			preparedStatement.setString(1, name);
 			preparedStatement.setString(2, profession);
 			preparedStatement.setString(3, endurance);
-			preparedStatement.setByte(4, level);
-			preparedStatement.setLong(5, cost);
-			;
-			preparedStatement.setInt(6, room);
+			preparedStatement.setLong(4, cost);
+			preparedStatement.setInt(5, room);
 			preparedStatement.executeUpdate();
 			connection.close();
 		} catch (final SQLException e) {
