@@ -32,8 +32,7 @@ public class DataConnection {
 	 * @throws SQLException
 	 * 
 	 */
-
-	public static Connection createConnection() {
+	public static Connection createConnection(String serverType) {
 		
 		try {
             Class.forName(DatabaseCredentials.getDriver());
@@ -41,7 +40,7 @@ public class DataConnection {
         	exception.printStackTrace();
         }
 		
-        final String databaseURL = DatabaseCredentials.getURL();
+        final String databaseURL = DatabaseCredentials.getURL(serverType);
         final String user = DatabaseCredentials.getUser();
         final String password = DatabaseCredentials.getPassword();
         try {
@@ -52,6 +51,7 @@ public class DataConnection {
 		return connection;
 	}
 
+	
 	/**
 	 * <br/>
 	 * METHOD DESCRIPTION: <br/>

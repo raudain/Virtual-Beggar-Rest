@@ -58,11 +58,11 @@ public class WorkerDao {
 	 * @throws SQLException
 	 *
 	 */
-	public ArrayList<Worker> getWorkers() {
+	public ArrayList<Worker> getWorkers(String serverType) {
 
 		Statement statement = null;
 
-		connection = DataConnection.createConnection();
+		connection = DataConnection.createConnection(serverType);
 
 		String sqlScript = sqlScripts.getListWorkers();
 		try {
@@ -109,7 +109,7 @@ public class WorkerDao {
 
 		return workerList;
 	}
-
+	
 	/**
 	 * <br/>
 	 * METHOD DESCRIPTION: <br/>
@@ -131,7 +131,7 @@ public class WorkerDao {
 
 		Statement statement = null;
 
-		connection = DataConnection.createConnection();
+		connection = DataConnection.createConnection(null);
 
 		try {
 			statement = connection.createStatement();
@@ -185,7 +185,7 @@ public class WorkerDao {
 	 */
 	public Worker getWorker(short room) {
 
-		connection = DataConnection.createConnection();
+		connection = DataConnection.createConnection(null);
 		final String searchString = "SELECT * FROM workers WHERE room=?;";
 		Worker worker = new Worker();
 		try {
@@ -235,7 +235,7 @@ public class WorkerDao {
 	public void updateWorker(Worker updatedWorker) {
 
 		// Create a new connection to the database
-		connection = DataConnection.createConnection();
+		connection = DataConnection.createConnection(null);
 
 		String sqlScript = sqlScripts.getUpdateWorker();
 		short room = updatedWorker.getRoom();

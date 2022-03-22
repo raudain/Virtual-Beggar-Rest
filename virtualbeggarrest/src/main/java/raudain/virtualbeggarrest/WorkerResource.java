@@ -24,7 +24,15 @@ public class WorkerResource
 	@Produces({MediaType.APPLICATION_JSON, MediaType.APPLICATION_XML})
 	public List<Worker> getWorkers() {	
 		System.out.println("getWorkers called...");
-		return repo.getWorkers();
+		return repo.getWorkers(null);
+	}
+	
+	@GET
+	@Path("sqlserver")
+	@Produces({MediaType.APPLICATION_JSON, MediaType.APPLICATION_XML})
+	public List<Worker> getAllWorkers() {	
+		System.out.println("getWorkers called...");
+		return repo.getWorkers("SQL Server");
 	}
 	
 	@GET

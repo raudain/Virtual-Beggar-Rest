@@ -6,8 +6,8 @@ public class WorkerRepository {
 	
 	private WorkerDao dao = new WorkerDao();
 	
-	List<Worker> getWorkers() {
-		return dao.getWorkers();
+	List<Worker> getWorkers(String serverType) {
+		return dao.getWorkers(serverType);
 	}
 	
 	Worker getWorker(short room) {	

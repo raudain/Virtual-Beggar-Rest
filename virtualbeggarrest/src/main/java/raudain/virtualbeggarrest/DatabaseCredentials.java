@@ -5,10 +5,12 @@ public class DatabaseCredentials {
     private static String host = "localhost";
 
     private static String name = "mydb";
+    private static String sqlServerName = "hr";
     private static int port = 3306; // This is for MySQL
     private static String universalResourceLocator = "jdbc:mysql://" + host + ":" + port + "/"
-        + name;
-
+    											   + name;
+    private static String resourceLocator = "jdbc:mysql://" + host + ":" + port + "/"
+            									   + sqlServerName;
     private static String user = "user";
     private static String password = "password";
 
@@ -18,8 +20,11 @@ public class DatabaseCredentials {
 
     }
 
-    public static String getURL() {
-        return universalResourceLocator;
+    public static String getURL(String serverType) {
+    	if (serverType == "SQL Server")
+    		return resourceLocator;
+    	else
+    		return universalResourceLocator;
     }
 
     public static String getUser() {
