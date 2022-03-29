@@ -64,42 +64,74 @@ public class WorkerDao {
 
 		connection = DataConnection.createConnection(serverType);
 
-		String sqlScript = sqlScripts.getListWorkers();
+		String sqlScript;
+		if (serverType == "SQL Server")
+			sqlScript = sqlScripts.getSqlServerListWorkers();
+		else
+			sqlScript = sqlScripts.getListWorkers();
 		try {
 			statement = connection.createStatement();
 			resultSet = statement.executeQuery(sqlScript);
 		} catch (final SQLException e) {
-			e.printStackTrace();
-			;
+			System.out.println("WorkerDao.getWorkers() Error getting resultSet: " + e);
 		}
-
+		return getWorkerList(serverType);
+	}
+	
+	private ArrayList<Worker> getWorkerList(String serverType) {
+		
 		// Now we collect the data from the result in order to display them in
 		// the Java Server Page
 		ArrayList<Worker> workerList = new ArrayList<Worker>();
 		try {
-			while (resultSet.next()) {
-				
-				Worker worker = new Worker();
+			if (serverType == "SQL Server") {
+				while (resultSet.next()) {
+						
+					Worker worker = new Worker();
 
-				short room = resultSet.getShort("room");
-				worker.setRoom(room);
+					short room = resultSet.getShort("room");
+					worker.setRoom(room);
 
-				String name = resultSet.getString("name");
-				worker.setName(name);
+					String name = resultSet.getString("name");
+					worker.setName(name);
 
-				String profession = resultSet.getString("profession");
-				worker.setProfession(profession);
+					String profession = resultSet.getString("profession");
+					worker.setProfession(profession);
 
-				String endurance = resultSet.getString("endurance");
-				worker.setEndurance(endurance);
+					String endurance = resultSet.getString("endurance");
+					worker.setEndurance(endurance);
 
-				long cost = resultSet.getLong("cost");
-				worker.setCost(cost);
+					long cost = resultSet.getLong("cost");
+					worker.setCost(cost);
 
-				workerList.add(worker);
+					workerList.add(worker);
+				}
+			}
+			else {
+				while (resultSet.next()) {
+					
+					Worker worker = new Worker();
+
+					short room = resultSet.getShort("room");
+					worker.setRoom(room);
+
+					String name = resultSet.getString("name");
+					worker.setName(name);
+
+					String profession = resultSet.getString("profession");
+					worker.setProfession(profession);
+
+					String endurance = resultSet.getString("endurance");
+					worker.setEndurance(endurance);
+
+					long cost = resultSet.getLong("cost");
+					worker.setCost(cost);
+
+					workerList.add(worker);
+				}
 			}
 		} catch (final SQLException e) {
-			System.out.println("WorkerDao.getWorkers() Error: " + e);
+			System.out.println("WorkerDao.getWorkerList() Error Populating workerList: " + e);
 		}
 		try {
 			DataConnection.closeConnection();
