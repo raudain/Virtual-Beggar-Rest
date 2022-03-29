@@ -6,6 +6,7 @@ package raudain.virtualbeggarrest;
 public class DatabaseQuerysBean {
 	
 	private String listWorkers = "";
+	private String sqlServerListWorkers = "";
 	private String updateWorker = "";
 	
 	public String getListWorkers() {
@@ -14,6 +15,14 @@ public class DatabaseQuerysBean {
 
 	public void setListWorkers(String listWorkers) {
 		this.listWorkers = listWorkers;
+	}
+	
+	public String getSqlServerListWorkers() {
+		return sqlServerListWorkers;
+	}
+
+	public void setSqlServerListWorkers(String sqlServerListWorkers) {
+		this.sqlServerListWorkers = sqlServerListWorkers;
 	}
 	
 	public String getUpdateWorker() {
