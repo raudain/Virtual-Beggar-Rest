@@ -87,7 +87,7 @@ public class WorkerDao {
 			if (serverType == "SQL Server") {
 				while (resultSet.next()) {
 						
-					Worker worker = new Worker();
+					Worker2 worker = new Worker2();
 
 					short room = resultSet.getShort("room");
 					worker.setRoom(room);
@@ -95,22 +95,25 @@ public class WorkerDao {
 					String name = resultSet.getString("name");
 					worker.setName(name);
 
-					String profession = resultSet.getString("profession");
+					String profession = resultSet.getString("type");
 					worker.setProfession(profession);
 
-					String endurance = resultSet.getString("endurance");
+					String endurance = resultSet.getString("level");
 					worker.setEndurance(endurance);
 
 					long cost = resultSet.getLong("cost");
 					worker.setCost(cost);
-
+					
+					String costWithCommas = resultSet.getString("cost_w_comma");
+					worker.setCostWithComma(costWithCommas);
+					
 					workerList.add(worker);
 				}
 			}
 			else {
 				while (resultSet.next()) {
 					
-					Worker worker = new Worker();
+					Worker1 worker = new Worker1();
 
 					short room = resultSet.getShort("room");
 					worker.setRoom(room);
@@ -215,11 +218,11 @@ public class WorkerDao {
 	 * @throws SQLException
 	 *
 	 */
-	public Worker getWorker(short room) {
+	public Worker1 getWorker(short room) {
 
 		connection = DataConnection.createConnection(null);
 		final String searchString = "SELECT * FROM workers WHERE room=?;";
-		Worker worker = new Worker();
+		Worker1 worker = new Worker1();
 		try {
 			preparedStatement = connection.prepareStatement(searchString);
 			preparedStatement.setShort(1, room);
@@ -264,7 +267,7 @@ public class WorkerDao {
 	 * @param A worker that need to be updated
 	 * @return void
 	 */
-	public void updateWorker(Worker updatedWorker) {
+	public void updateWorker(Worker1 updatedWorker) {
 
 		// Create a new connection to the database
 		connection = DataConnection.createConnection(null);
@@ -290,7 +293,7 @@ public class WorkerDao {
 		}
 	}
 
-	public Object createWorker(Worker worker) {
+	public Object createWorker(Worker1 worker) {
 		// TODO Auto-generated method stub
 		return null;
 	}

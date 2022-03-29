@@ -38,7 +38,7 @@ public class WorkerResource
 	@GET
 	@Path("worker/{id}")
 	@Produces({MediaType.APPLICATION_JSON, MediaType.APPLICATION_XML})
-	public Worker getWorker(@PathParam("id") short id)
+	public Worker1 getWorker(@PathParam("id") short id)
 	{
 		return repo.getWorker(id);
 	}
@@ -46,7 +46,7 @@ public class WorkerResource
 	@POST
 	@Path("alien")
 	@Consumes({MediaType.APPLICATION_XML, MediaType.APPLICATION_JSON})
-	public Worker createWorker(Worker a1)
+	public Worker1 createWorker(Worker1 a1)
 	{
 		System.out.println(a1);
 		repo.create(a1);
@@ -57,7 +57,7 @@ public class WorkerResource
 	@PUT
 	@Path("alien")
 	@Consumes({MediaType.APPLICATION_XML, MediaType.APPLICATION_JSON})
-	public Worker updateAlien(Worker a1)
+	public Worker1 updateAlien(Worker1 a1)
 	{
 		System.out.println(a1);
 		if(repo.getWorker(a1.getRoom()).getRoom()==0)
@@ -73,9 +73,9 @@ public class WorkerResource
 	
 	@DELETE
 	@Path("alien/{id}")
-	public Worker killAlien(@PathParam("id") short id)
+	public Worker1 killAlien(@PathParam("id") short id)
 	{
-		Worker a = repo.getWorker(id);
+		Worker1 a = repo.getWorker(id);
 		
 		if(a.getRoom()!=0)
 			repo.delete(id);

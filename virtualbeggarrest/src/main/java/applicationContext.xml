@@ -9,7 +9,7 @@
 	
 	<bean id="SqlBean" class="raudain.virtualbeggarrest.DatabaseQuerysBean">
 		<property name="listWorkers" value="SELECT workers.room, workers.name, professions.ProfessionID AS profession, endurances.level AS endurance, workers.cost FROM mydb.workers INNER JOIN professions ON  professions.ProfessionID = workers.ProfessionID INNER JOIN endurances ON endurances.id = workers.endurance;"></property>
-		<property name="sqlServerListWorkers" value="SELECT workers.room, workers.name, workers.profession_id, workers.endurance_id, workers.cost FROM hr.workers;"></property>
+		<property name="sqlServerListWorkers" value="SELECT w.room, w.name, p.type, e.level, w.cost, FORMAT(w.cost, '#,#') AS cost_w_comma FROM hr.workers w INNER JOIN hr.professions p ON p.id = w.profession_id INNER JOIN hr.endurances e ON e.id = w.endurance_id"></property>
 		<property name="updateWorker" value="UPDATE `mydb`.`workers` SET `name` = ?, `profession` = ?, `endurance` = ?, `cost` = ? WHERE (`room` = ?);"></property>
  	</bean>
 </beans>

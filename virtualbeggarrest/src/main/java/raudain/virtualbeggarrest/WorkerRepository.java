@@ -10,15 +10,15 @@ public class WorkerRepository {
 		return dao.getWorkers(serverType);
 	}
 	
-	Worker getWorker(short room) {	
+	Worker1 getWorker(short room) {	
 		return dao.getWorker(room);
 	}
 
-	void create(Worker worker) {
+	void create(Worker1 worker) {
 		dao.createWorker(worker);
 	}
 	
-	void update(Worker updatedWorker) {
+	void update(Worker1 updatedWorker) {
 		dao.updateWorker(updatedWorker);
 	}
 

@@ -3,14 +3,13 @@ package raudain.virtualbeggarrest;
 import javax.xml.bind.annotation.XmlRootElement;
 
 @XmlRootElement
-public class Worker2 implements Worker {
+public class Worker1 implements Worker {
     
     private short room;
     private String name;
     private String profession;
     private String endurance;
     private long cost;
-    private String cost_w_comma;
 
 
     /**
@@ -92,21 +91,5 @@ public class Worker2 implements Worker {
     public void setCost(final long cost) {
 
         this.cost = cost;
-    }
-    
-    /**
-     * @return the cost with commas
-     */
-    public String getCostWithComma() {
-
-        return cost_w_comma;
-    }
-
-    /**
-     * @param cost_w_comma to set
-     */
-    public void setCostWithComma(String cost_w_comma) {
-
-        this.cost_w_comma = cost_w_comma;
     }
 }
